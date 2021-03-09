@@ -1,0 +1,37 @@
+STOIAN MIRUNA MARIA 
+325CB
+Protocoale de Comunicatie No 1
+
+Main
+Primes un pacher. Aloc tabela de routare si o sortez crescator in functie de prefix
+iar cand prefixele sunt egale sortez descrescator in functie de masca,aloc tabela si declar doua variabile de tipul struct iphdr si struct icmphdr.
+Primesc un pachet si verific sa vad daca este de tip IP raspund la acesta si arunc
+pachetul original.
+Daca TTL-ul este <= 1 transmit un mesaj ICMP si arunc pachetul pe jos.
+Daca checksum-ul pachetului este gresit il arunc.Decrementez TTL-ul si updatez checksum-ul.
+In continuare caut intrarea cea mai specifica din tabela de rutare.Daca aceasta nu este 
+gasita transmit un mesaj de tip ICMP si arunc pachetul.
+Trimiterea pachetelor se realizeaza cu functia send_packet.
+In functie de tipul mesajului completez campurile specifice precizate in enuntul temei.
+
+compara si comparaMask
+Sortarea tabelei o fac cu ajutorul functiei qsort.Cele doua functii imi verifica
+valorile si in functie de ce returneaza acestea tabela este sortata crescator
+dupa prefix iar in momentul in care acestea sunt egale descrescator dupa masca.
+
+verifica_liniisi  nr_lines_arp()
+In aceaste functii deschid fisierul si cu strtok iau fiecare linie si o adaug intr-o 
+variabia nr_linii. La final returnez aceasta variabila iar in main aloc tabela de rutare
+si tabela arp cu dimeniunea intoarsa de aceasta functie.
+
+read_rtable si read_arp_tabel
+In aceaste functii deschid fisierul si parsez tabela de rutare/tabela arp.
+Citesc o linie pana la "\n" si separ sirul in mai multe cuvinte.
+Transform aceste cuvinte cu inet_addr si atoi si le adaug in campurile specifice.
+In functia read_arp_table folosesc hwaddr_aton pentru a transforma adresa MAC.
+
+get_best_route
+In aceasta functie caut cea mai buna intrare. Apelez functia binarySearch in care fac o cautare binara iar in momentul in care o gasesc apelez functia maxim pentru a gasi intrarea cea mai portivita.
+
+
+
